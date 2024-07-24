@@ -1,9 +1,8 @@
-
-
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
 
 from ...youtube_tool import CookiesBrowsers, YoutubeTool
+from pprint import pprint, pformat
 
 BROWSER: CookiesBrowsers = "vivaldi"
 
@@ -40,7 +39,5 @@ def test_youtube_tool_fetch_info():
     info = tool.fetch_info(
         "https://www.youtube.com/watch?v=&list=PLQQsYaXd5huAqbx5q1cZvHqYRhV3Gv56s"
     )
-
-    with open("info.json", "w", encoding="utf-8") as f:
-        json.dump(info, f, indent=4)
-    print(info)
+    parsed = tool.parse_playlist(info)
+    pprint(parsed.entries)

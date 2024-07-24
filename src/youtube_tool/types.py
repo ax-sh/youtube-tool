@@ -1,7 +1,38 @@
-from typing import Literal, Optional
+from typing import Literal, Optional, List
 from pydantic import BaseModel, HttpUrl
 
 CookiesBrowsers = Literal["brave", "chrome", "vivaldi", "firefox", ""]
+
+
+class YoutubeVideo(BaseModel):
+    id: str
+    url: str
+    title: str
+    view_count: int
+    duration: int
+    # thumbnails:
+
+    class Config:
+        extra = "allow"
+
+
+class YoutubePlaylist(BaseModel):
+    channel_url:str
+    channel_id:str
+    channel:str
+    availability:str
+
+    entries: List[YoutubeVideo]
+
+    class Config:
+        extra = "allow"
+
+
+class PlaylistEntry(BaseModel):
+    title: str
+
+    class Config:
+        extra = "allow"
 
 
 class VideoInfo(BaseModel):

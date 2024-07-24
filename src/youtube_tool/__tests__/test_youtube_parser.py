@@ -30,6 +30,7 @@ def test_parse_json():
         entry = VideoInfo(**i)
         print(entry.uploader)
 
+
 def test_video_info_validation():
     # Example dictionary
     data = {

@@ -1,8 +1,10 @@
+from typing import List
+
 from requests import Session
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
 
-from .types import CookiesBrowsers
+from .types import CookiesBrowsers, VideoInfo, PlaylistEntry, YoutubePlaylist
 
 
 class YoutubeTool:
@@ -45,3 +47,7 @@ class YoutubeTool:
     def get_playlist(self, playlist_id: str):
         url = f"https://www.youtube.com/watch?v={playlist_id}"
         return self.fetch_info(url)
+
+    @staticmethod
+    def parse_playlist(info: dict) -> YoutubePlaylist:
+        return YoutubePlaylist(**info)
