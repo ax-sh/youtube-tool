@@ -16,13 +16,14 @@ def test_youtube_tool_init_browser():
 
     assert tool.extractor._cookies_passed == True
 
+
 def test_youtube_tool_fetch_info():
     from . import YoutubeTool
     import json
 
     tool = YoutubeTool("brave")
-    info = tool.fetch_info('https://www.youtube.com/watch?v=amXz5QsRG-4')
+    info = tool.fetch_info("https://www.youtube.com/watch?v=amXz5QsRG-4")
 
-    with open('info.json', 'w', encoding='utf-8') as f:
+    with open("info.json", "w", encoding="utf-8") as f:
         json.dump(info, f, indent=4)
     print(info)
