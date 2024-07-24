@@ -3,7 +3,7 @@ import pytest
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
 
-from . import CookiesBrowsers
+from ...youtube_tool import CookiesBrowsers, YoutubeTool
 
 BROWSER: CookiesBrowsers = "vivaldi"
 
@@ -14,8 +14,6 @@ def test_number_one():
 
 
 def test_youtube_tool_init_browser():
-    from . import YoutubeTool
-
     tool = YoutubeTool(BROWSER)
 
     # assert tool.extractor._cookies_passed == True
@@ -36,7 +34,6 @@ def test_youtube_dl_cookiesfrombrowser():
 
 
 def test_youtube_tool_fetch_info():
-    from . import YoutubeTool
     import json
 
     tool = YoutubeTool(BROWSER)
