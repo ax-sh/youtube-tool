@@ -1,5 +1,3 @@
-from typing import List
-
 from requests import Session
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor

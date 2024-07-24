@@ -17,10 +17,10 @@ class YoutubeVideo(BaseModel):
 
 
 class YoutubePlaylist(BaseModel):
-    channel_url:str
-    channel_id:str
-    channel:str
-    availability:str
+    channel_url: str
+    channel_id: str
+    channel: str
+    availability: str
 
     entries: List[YoutubeVideo]
 
