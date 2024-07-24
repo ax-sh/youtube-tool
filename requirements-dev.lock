@@ -19,6 +19,8 @@ charset-normalizer==3.3.2
     # via requests
 colorama==0.4.6
     # via pytest
+faker==26.0.0
+    # via youtube-tool
 idna==3.7
     # via requests
 iniconfig==2.0.0
@@ -42,12 +44,16 @@ pytest==8.3.1
 pytest-ruff==0.4.1
 pytest-spec==3.2.0
 pytest-sugar==1.0.0
+python-dateutil==2.9.0.post0
+    # via faker
 requests==2.32.3
+    # via youtube-tool
     # via yt-dlp
 ruff==0.5.4
     # via pytest-ruff
 six==1.16.0
     # via pytest-spec
+    # via python-dateutil
 termcolor==2.4.0
     # via pytest-sugar
 typing-extensions==4.12.2

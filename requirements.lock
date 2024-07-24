@@ -17,6 +17,8 @@ certifi==2024.7.4
     # via yt-dlp
 charset-normalizer==3.3.2
     # via requests
+faker==26.0.0
+    # via youtube-tool
 idna==3.7
     # via requests
 mutagen==1.47.0
@@ -27,8 +29,13 @@ pydantic==2.8.2
     # via youtube-tool
 pydantic-core==2.20.1
     # via pydantic
+python-dateutil==2.9.0.post0
+    # via faker
 requests==2.32.3
+    # via youtube-tool
     # via yt-dlp
+six==1.16.0
+    # via python-dateutil
 typing-extensions==4.12.2
     # via pydantic
     # via pydantic-core
