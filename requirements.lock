@@ -10,6 +10,8 @@
 -e file:.
 annotated-types==0.7.0
     # via pydantic
+beautifulsoup4==4.12.3
+    # via youtube-tool
 brotli==1.1.0
     # via yt-dlp
 certifi==2024.7.4
@@ -36,6 +38,8 @@ requests==2.32.3
     # via yt-dlp
 six==1.16.0
     # via python-dateutil
+soupsieve==2.5
+    # via beautifulsoup4
 typing-extensions==4.12.2
     # via pydantic
     # via pydantic-core
