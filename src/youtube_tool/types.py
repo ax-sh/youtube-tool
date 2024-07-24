@@ -1,7 +1,7 @@
 from typing import Literal, Optional
 from pydantic import BaseModel, HttpUrl
 
-CookiesBrowsers = Literal["brave", "chrome", "vivaldi", ""]
+CookiesBrowsers = Literal["brave", "chrome", "vivaldi", "firefox", ""]
 
 
 class VideoInfo(BaseModel):
