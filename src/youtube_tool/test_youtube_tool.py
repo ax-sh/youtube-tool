@@ -13,10 +13,10 @@ def test_youtube_tool_init_browser():
     from . import YoutubeTool
 
     tool = YoutubeTool("brave")
-    cookies = [i for i in tool.api().cookies if i.domain == ".youtube.com"]
+
     assert tool.extractor._cookies_passed == True
-    #
-    # def test_youtube_tool_init_browser():
+
+def test_youtube_tool_init_browser():
     #     from . import YoutubeTool
     #     browser = BROWSER
     #

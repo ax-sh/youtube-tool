@@ -13,6 +13,7 @@ class YoutubeTool:
             else client
         )
         self.extractor = YoutubeBaseInfoExtractor(self.ydl)
+        # cookies = [i for i in self.ydl.cookiejar if i.domain == ".youtube.com"]
 
     @staticmethod
     def make_youtube_dl_config(browser: str):
