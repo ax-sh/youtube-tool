@@ -3,7 +3,11 @@ from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
 
 from .types import CookiesBrowsers, VideoInfo, PlaylistEntry, YoutubePlaylist
+from bs4 import BeautifulSoup as Soup
+from typing_extensions import TypedDict
 
+class YtcfgDict(TypedDict, total=False):
+    VISITOR_DATA: str
 
 class YoutubeTool:
     def __init__(self, client: YoutubeDL | CookiesBrowsers) -> None:
@@ -49,6 +53,10 @@ class YoutubeTool:
     @staticmethod
     def parse_playlist(info: dict) -> YoutubePlaylist:
         return YoutubePlaylist(**info)
+
+    def find_ytcfg_from_yt_dlp(self, soup: Soup, video_id: str) -> YtcfgDict:
+        webpage = soup.text
+        return self.extractor.extract_ytcfg(video_id, webpage)
 
     def fetch_videos_from_playlist(self, url: str) -> YoutubePlaylist:
         info = self.fetch_info(url)
