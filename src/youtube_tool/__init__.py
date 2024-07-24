@@ -1,11 +1,8 @@
-from click import option
 from requests import Session
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
-from typing import Literal
 
-
-CookiesBrowsers = Literal["brave", "chrome", "vivaldi", ""]
+from src.youtube_tool.types import CookiesBrowsers
 
 
 class YoutubeTool:
