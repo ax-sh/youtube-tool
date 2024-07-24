@@ -10,5 +10,7 @@ wheels/
 .venv
 
 info.json
+info_playlist.json
+info_video.json
 
 .idea
