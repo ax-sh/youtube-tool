@@ -33,11 +33,13 @@ def test_youtube_dl_cookiesfrombrowser():
 
 
 def test_youtube_tool_fetch_info():
-    import json
-
     tool = YoutubeTool(BROWSER)
-    info = tool.fetch_info(
+    parsed = tool.fetch_videos_from_playlist(
         "https://www.youtube.com/watch?v=&list=PLQQsYaXd5huAqbx5q1cZvHqYRhV3Gv56s"
     )
-    parsed = tool.parse_playlist(info)
     pprint(parsed.entries)
+    entry = parsed.entries[0]
+    pprint(entry.thumbnails)
+    print(
+        entry.thumb,
+    )

@@ -1,16 +1,29 @@
-from typing import Literal, Optional, List
-from pydantic import BaseModel, HttpUrl
+from typing import Literal, Optional, List, Any
+
+from pydantic import BaseModel, model_validator, HttpUrl
 
 CookiesBrowsers = Literal["brave", "chrome", "vivaldi", "firefox", ""]
 
 
 class YoutubeVideo(BaseModel):
     id: str
-    url: str
+    url: HttpUrl
     title: str
     view_count: int
     duration: int
-    # thumbnails:
+    thumbnails: List[Any] = []
+    timestamp: int = 0
+
+    @model_validator(mode="before")
+    @classmethod
+    def normalize_thumbnail(cls, data: Any) -> Any:
+        thumbnails = data["thumbnails"]
+        thumb = max(thumbnails, key=lambda x: x["height"] * x["width"])
+        data["thumb"] = thumb["url"]
+
+        return data
+
+    thumb: str = ""
 
     class Config:
         extra = "allow"

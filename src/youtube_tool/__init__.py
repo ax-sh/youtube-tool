@@ -49,3 +49,7 @@ class YoutubeTool:
     @staticmethod
     def parse_playlist(info: dict) -> YoutubePlaylist:
         return YoutubePlaylist(**info)
+
+    def fetch_videos_from_playlist(self, url: str) -> YoutubePlaylist:
+        info = self.fetch_info(url)
+        return YoutubePlaylist(**info)
