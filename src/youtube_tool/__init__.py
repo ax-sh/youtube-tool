@@ -1,11 +1,40 @@
+from click import option
 from requests import Session
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
+from typing import Literal
+
+
+CookiesBrowsers = Literal["brave", "chrome", "vivaldi", ""]
+
 
 class YoutubeTool:
-    def __init__(self, ydl: YoutubeDL):
-        self.ydl = ydl
-        self.extractor = YoutubeBaseInfoExtractor(ydl)
+    def __init__(self, client: YoutubeDL | CookiesBrowsers) -> None:
+        self.ydl = (
+            YoutubeDL(self.make_youtube_dl_config(client))
+            if isinstance(client, str)
+            else client
+        )
+        self.extractor = YoutubeBaseInfoExtractor(self.ydl)
+
+    @staticmethod
+    def make_youtube_dl_config(browser: str):
+        options = {
+            "extract_flat": "in_playlist",
+            "dump_single_json": True,
+            "allow_unplayable_formats": True,
+            "ignoreerrors": False,
+            "no_warnings": True,
+            "clean_infojson": True,
+            "lazy_playlist": True,
+            # 'logger': YoutubeUtilsLogger(),
+            # extractor_args E.g. {'youtube': {'skip': ['dash', 'hls']}}
+            "extractor_args": {"youtubetab": {"approximate_date": [""]}},
+        }
+        if browser:
+            options.update({"cookiesfrombrowser": (browser,)})
+
+        return options
 
     def api(self) -> Session:
         session = Session()
