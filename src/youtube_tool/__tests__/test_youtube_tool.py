@@ -40,6 +40,4 @@ def test_youtube_tool_fetch_info():
     pprint(parsed.entries)
     entry = parsed.entries[0]
     pprint(entry.thumbnails)
-    print(
-        entry.thumb,
-    )
+    print(entry.thumb)
