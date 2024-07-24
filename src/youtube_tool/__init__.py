@@ -60,6 +60,25 @@ class YoutubeTool:
         webpage = soup.text
         return self.extractor.extract_ytcfg(video_id, webpage)
 
+    def remove_video_from_playlist(self, video_id: str):
+        action = {
+            "removedVideoId": video_id,
+            "action": "ACTION_REMOVE_VIDEO_BY_VIDEO_ID",
+        }
+        endpoint = "browse/edit_playlist?prettyPrint=false"
+        query = {
+            "actions": [action],
+            "playlistId": "WL",
+            "params": "CAFAAQ%3D%3D",
+        }
+        response = self.extractor._extract_response(
+            ep=endpoint,
+            query=query,
+            item_id=video_id,
+            # video_id=video_id,
+        )
+        return response
+
     def fetch_videos_from_playlist(self, url: str) -> YoutubePlaylist:
         info = self.fetch_info(url)
         return YoutubePlaylist(**info)
