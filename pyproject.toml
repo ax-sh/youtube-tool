@@ -7,6 +7,7 @@ authors = [
 ]
 dependencies = [
     "yt-dlp[default]>=2024.7.16",
+    "pydantic>=2.8.2",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
