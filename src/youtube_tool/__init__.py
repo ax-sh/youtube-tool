@@ -6,8 +6,10 @@ from .types import CookiesBrowsers, VideoInfo, PlaylistEntry, YoutubePlaylist
 from bs4 import BeautifulSoup as Soup
 from typing_extensions import TypedDict
 
+
 class YtcfgDict(TypedDict, total=False):
     VISITOR_DATA: str
+
 
 class YoutubeTool:
     def __init__(self, client: YoutubeDL | CookiesBrowsers) -> None:

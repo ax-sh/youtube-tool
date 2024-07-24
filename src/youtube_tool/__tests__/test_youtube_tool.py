@@ -41,3 +41,25 @@ def test_youtube_tool_fetch_info():
     entry = parsed.entries[0]
     pprint(entry.thumbnails)
     print(entry.thumb)
+
+
+def test_youtube_tool_remove_video_from_playlist():
+    tool = YoutubeTool(BROWSER)
+    api = tool.api()
+    video_id = "STUL431Urfk"
+    # c =  tool.extractor._download_ytcfg('web', 'STUL431Urfk')
+    # o = tool.extractor.extract_yt_initial_data()
+    action = {
+        "removedVideoId": video_id,
+        "action": "ACTION_REMOVE_VIDEO_BY_VIDEO_ID",
+    }
+    o = tool.extractor._call_api(
+        "browse/edit_playlist?prettyPrint=false",
+        {
+            "actions": [action],
+            "playlistId": "WL",
+            "params": "CAFAAQ%3D%3D",
+        },
+        video_id,
+    )
+    pprint(o)
