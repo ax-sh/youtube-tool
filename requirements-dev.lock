@@ -27,6 +27,7 @@ mutagen==1.47.0
     # via yt-dlp
 packaging==24.1
     # via pytest
+    # via pytest-sugar
 pluggy==1.5.0
     # via pytest
 pycryptodomex==3.20.0
@@ -36,11 +37,19 @@ pydantic==2.8.2
 pydantic-core==2.20.1
     # via pydantic
 pytest==8.3.1
+    # via pytest-ruff
+    # via pytest-sugar
+pytest-ruff==0.4.1
 pytest-spec==3.2.0
+pytest-sugar==1.0.0
 requests==2.32.3
     # via yt-dlp
+ruff==0.5.4
+    # via pytest-ruff
 six==1.16.0
     # via pytest-spec
+termcolor==2.4.0
+    # via pytest-sugar
 typing-extensions==4.12.2
     # via pydantic
     # via pydantic-core

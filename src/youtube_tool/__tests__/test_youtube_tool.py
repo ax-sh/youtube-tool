@@ -1,4 +1,4 @@
-import pytest
+
 
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
@@ -17,7 +17,7 @@ def test_youtube_tool_init_browser():
     tool = YoutubeTool(BROWSER)
 
     # assert tool.extractor._cookies_passed == True
-    assert tool.extractor.is_authenticated == True
+    assert tool.extractor.is_authenticated
 
 
 def test_youtube_dl_cookiesfrombrowser():
@@ -30,7 +30,7 @@ def test_youtube_dl_cookiesfrombrowser():
     )
     extractor = YoutubeBaseInfoExtractor(ydl)
     # print(extractor.cookiejar)
-    assert extractor.is_authenticated == True
+    assert extractor.is_authenticated
 
 
 def test_youtube_tool_fetch_info():

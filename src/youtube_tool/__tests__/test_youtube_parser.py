@@ -23,6 +23,5 @@ def test_parse_json():
     print(title)
     assert len(entries) == 8
     for i in entries:
-        i[""]
         entry = VideoInfo(**i)
         print(entry.uploader)
