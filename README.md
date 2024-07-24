@@ -2,10 +2,10 @@
 
 ## To use in project
 ```shell
-pip install git+https://github.com/ax-sh/youtube-tools
-# https://github.com/ax-sh/youtube-tools/tree/master
+pip install git+https://github.com/ax-sh/youtube-tool
+# https://github.com/ax-sh/youtube-tool/tree/master
 
-rye add youtube-tools --git=https://github.com/ax-sh/youtube-tools
+rye add youtube-tool --git=https://github.com/ax-sh/youtube-tool
 ```
 
 

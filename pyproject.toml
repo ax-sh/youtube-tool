@@ -11,6 +11,7 @@ dependencies = [
     "faker>=26.0.0",
     "requests>=2.32.3",
     "beautifulsoup4>=4.12.3",
+    "youtube-tool @ git+https://github.com/ax-sh/youtube-tool",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
