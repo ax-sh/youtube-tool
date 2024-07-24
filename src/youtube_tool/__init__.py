@@ -39,9 +39,9 @@ class YoutubeTool:
         session.cookies = self.ydl.cookiejar
         return session
 
-    def fetch_data(self, url: str) -> dict:
+    def fetch_info(self, url: str) -> dict:
         return self.ydl.extract_info(url, download=False)
 
     def get_playlist(self, playlist_id: str):
         url = f"https://www.youtube.com/watch?v={playlist_id}"
-        return self.fetch_data(url)
+        return self.fetch_info(url)
