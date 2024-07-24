@@ -1,11 +1,15 @@
-from typing import TypedDict
+from typing import TypedDict, List
 
 from ..parser import JsonPath
 from ..types import VideoInfo
 
 
+class Entry(TypedDict):
+    uploader: str
+
+
 class PlaylistData(TypedDict):
-    entries: str
+    entries: List[Entry]
     title: str
 
 
@@ -19,5 +23,6 @@ def test_parse_json():
     print(title)
     assert len(entries) == 8
     for i in entries:
+        i[""]
         entry = VideoInfo(**i)
         print(entry.uploader)
