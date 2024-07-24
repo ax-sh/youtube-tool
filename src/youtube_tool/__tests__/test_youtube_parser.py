@@ -1,20 +1,7 @@
-from pathlib import Path
-import json
-from typing import TypeVar, Generic, TypedDict
+from typing import TypedDict
 
-from src.youtube_tool.types import VideoInfo
-
-T = TypeVar("T", bound=TypedDict)
-
-
-class JsonPath(Path, Generic[T]):
-    def read_json(self) -> T:
-        with self.open("r", encoding="utf-8") as f:
-            return json.load(f)
-
-    def write_json(self, data: T, indent: int = 4) -> None:
-        with self.open("w", encoding="utf-8") as f:
-            json.dump(data, f, indent=indent)
+from ..parser import JsonPath
+from ..types import VideoInfo
 
 
 class PlaylistData(TypedDict):
