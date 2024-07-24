@@ -5,7 +5,9 @@ description = "Add your description here"
 authors = [
     { name = "Axmin", email = "56112475+ax-sh@users.noreply.github.com" }
 ]
-dependencies = []
+dependencies = [
+    "yt-dlp[default]>=2024.7.16",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 
@@ -15,7 +17,9 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = []
+dev-dependencies = [
+    "pytest>=8.3.1",
+]
 
 [tool.hatch.metadata]
 allow-direct-references = true
