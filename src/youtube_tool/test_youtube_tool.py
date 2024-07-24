@@ -3,7 +3,7 @@ import pytest
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
 
-from src.youtube_tool import CookiesBrowsers
+from . import CookiesBrowsers
 
 BROWSER: CookiesBrowsers = "vivaldi"
 

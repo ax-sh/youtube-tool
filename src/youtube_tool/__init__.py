@@ -2,7 +2,7 @@ from requests import Session
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
 
-from src.youtube_tool.types import CookiesBrowsers
+from .types import CookiesBrowsers
 
 
 class YoutubeTool:

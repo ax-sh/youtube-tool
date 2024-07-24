@@ -36,8 +36,11 @@ pydantic==2.8.2
 pydantic-core==2.20.1
     # via pydantic
 pytest==8.3.1
+pytest-spec==3.2.0
 requests==2.32.3
     # via yt-dlp
+six==1.16.0
+    # via pytest-spec
 typing-extensions==4.12.2
     # via pydantic
     # via pydantic-core
