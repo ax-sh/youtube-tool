@@ -13,18 +13,7 @@ class YtcfgDict(TypedDict, total=False):
 
 
 class YoutubeTool:
-    def __init__(self, client: YoutubeDL | CookiesBrowsers) -> None:
-        self.ydl = (
-            YoutubeDL(self.make_youtube_dl_config(client))
-            if isinstance(client, str)
-            else client
-        )
-        self.extractor = YoutubeBaseInfoExtractor(self.ydl)
-        # cookies = [i for i in self.ydl.cookiejar if i.domain == ".youtube.com"]
-
-    @staticmethod
-    def make_youtube_dl_config(browser: str):
-        options = {
+    OPTIONS = {
             "extract_flat": "in_playlist",
             "dump_single_json": True,
             "allow_unplayable_formats": True,
@@ -36,8 +25,21 @@ class YoutubeTool:
             # extractor_args E.g. {'youtube': {'skip': ['dash', 'hls']}}
             "extractor_args": {"youtubetab": {"approximate_date": [""]}},
         }
+    def __init__(self, client: YoutubeDL | CookiesBrowsers) -> None:
+        self.ydl = (
+            YoutubeDL(self.make_youtube_dl_config(client))
+            if isinstance(client, str)
+            else client
+        )
+        self.extractor = YoutubeBaseInfoExtractor(self.ydl)
+        # cookies = [i for i in self.ydl.cookiejar if i.domain == ".youtube.com"]
+
+    @classmethod
+    def make_youtube_dl_config(cls, browser: str):
+        options = {"cookiesfrombrowser": (browser,)}
+
         if browser:
-            options.update({"cookiesfrombrowser": (browser,)})
+            options.update(cls.OPTIONS)
 
         return options
 

@@ -71,5 +71,5 @@ def test_youtube_tool_parse_watchlater_playlist():
 def test_youtube_tool_fetch_watchlater_playlist():
     tool = YoutubeTool(BROWSER)
     # parsed = tool.fetch_info("https://www.youtube.com/playlist?list=WL")
-    # JsonPath[dict]('wl.json').write_json(parsed)
+    # # JsonPath[dict]('wl.json').write_json(parsed)
     # print(parsed)
