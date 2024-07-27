@@ -9,10 +9,10 @@ class YoutubeVideo(BaseModel):
     id: str
     url: HttpUrl
     title: str
-    view_count: int = 0
-    duration: int = 0
+    view_count: Optional[int] = None
+    duration: Optional[int] = None
+    timestamp: Optional[int] = None
     thumbnails: List[Any] = []
-    timestamp: int = 0
 
     @model_validator(mode="before")
     @classmethod

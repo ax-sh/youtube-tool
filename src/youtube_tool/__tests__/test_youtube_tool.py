@@ -61,7 +61,10 @@ def test_youtube_tool_parse_watchlater_playlist():
         parsed = YoutubePlaylist(**data)
         print(parsed)
     except ValidationError as e:
-        print(e)
+        for i in e.errors():
+            print(i)
+            break
+        # pprint(len(e.errors()))
 
 
 
