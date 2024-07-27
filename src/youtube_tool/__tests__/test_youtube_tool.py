@@ -2,7 +2,7 @@ from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
 
 from ..parser import JsonPath
-from ...youtube_tool import CookiesBrowsers, YoutubeTool,  YoutubePlaylist
+from ...youtube_tool import CookiesBrowsers, YoutubeTool, YoutubePlaylist
 from pprint import pprint, pformat
 from pydantic import ValidationError
 
@@ -54,9 +54,10 @@ def test_youtube_tool_remove_video_from_playlist():
 
     print(removed_result["status"])
 
+
 def test_youtube_tool_parse_watchlater_playlist():
     path = JsonPath[dict](__file__).parent
-    data = path.joinpath('wl.json').read_json()
+    data = path.joinpath("wl.json").read_json()
     try:
         parsed = YoutubePlaylist(**data)
         print(parsed)
@@ -65,7 +66,6 @@ def test_youtube_tool_parse_watchlater_playlist():
             print(i)
             break
         # pprint(len(e.errors()))
-
 
 
 def test_youtube_tool_fetch_watchlater_playlist():

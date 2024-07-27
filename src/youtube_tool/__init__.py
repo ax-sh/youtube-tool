@@ -5,6 +5,7 @@ from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
 from bs4 import BeautifulSoup as Soup
 from typing_extensions import TypedDict
 
+from .constants import WATCH_LATER_URL
 from .types import CookiesBrowsers, VideoInfo, PlaylistEntry, YoutubePlaylist
 
 
@@ -14,17 +15,18 @@ class YtcfgDict(TypedDict, total=False):
 
 class YoutubeTool:
     OPTIONS = {
-            "extract_flat": "in_playlist",
-            "dump_single_json": True,
-            "allow_unplayable_formats": True,
-            "ignoreerrors": False,
-            "no_warnings": True,
-            "clean_infojson": True,
-            "lazy_playlist": True,
-            # 'logger': YoutubeUtilsLogger(),
-            # extractor_args E.g. {'youtube': {'skip': ['dash', 'hls']}}
-            "extractor_args": {"youtubetab": {"approximate_date": [""]}},
-        }
+        "extract_flat": "in_playlist",
+        "dump_single_json": True,
+        "allow_unplayable_formats": True,
+        "ignoreerrors": False,
+        "no_warnings": True,
+        "clean_infojson": True,
+        "lazy_playlist": True,
+        # 'logger': YoutubeUtilsLogger(),
+        # extractor_args E.g. {'youtube': {'skip': ['dash', 'hls']}}
+        "extractor_args": {"youtubetab": {"approximate_date": [""]}},
+    }
+
     def __init__(self, client: YoutubeDL | CookiesBrowsers) -> None:
         self.ydl = (
             YoutubeDL(self.make_youtube_dl_config(client))
@@ -85,3 +87,6 @@ class YoutubeTool:
     def fetch_videos_from_playlist(self, url: str) -> YoutubePlaylist:
         info = self.fetch_info(url)
         return YoutubePlaylist(**info)
+
+    def fetch_videos_from_watchlist(self) -> YoutubePlaylist:
+        return self.fetch_videos_from_playlist(WATCH_LATER_URL)
