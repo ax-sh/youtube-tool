@@ -1,8 +1,10 @@
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
 
-from ...youtube_tool import CookiesBrowsers, YoutubeTool
+from ..parser import JsonPath
+from ...youtube_tool import CookiesBrowsers, YoutubeTool,  YoutubePlaylist
 from pprint import pprint, pformat
+from pydantic import ValidationError
 
 BROWSER: CookiesBrowsers = "vivaldi"
 
@@ -51,3 +53,20 @@ def test_youtube_tool_remove_video_from_playlist():
     # o = tool.extractor.extract_yt_initial_data()
 
     print(removed_result["status"])
+
+def test_youtube_tool_parse_watchlater_playlist():
+    path = JsonPath[dict](__file__).parent
+    data = path.joinpath('wl.json').read_json()
+    try:
+        parsed = YoutubePlaylist(**data)
+        print(parsed)
+    except ValidationError as e:
+        print(e)
+
+
+
+def test_youtube_tool_fetch_watchlater_playlist():
+    tool = YoutubeTool(BROWSER)
+    # parsed = tool.fetch_info("https://www.youtube.com/playlist?list=WL")
+    # JsonPath[dict]('wl.json').write_json(parsed)
+    # print(parsed)

@@ -9,8 +9,8 @@ class YoutubeVideo(BaseModel):
     id: str
     url: HttpUrl
     title: str
-    view_count: int
-    duration: int
+    view_count: int = 0
+    duration: int = 0
     thumbnails: List[Any] = []
     timestamp: int = 0
 
