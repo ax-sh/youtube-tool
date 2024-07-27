@@ -2,9 +2,10 @@ from requests import Session
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
 
-from .types import CookiesBrowsers, VideoInfo, PlaylistEntry, YoutubePlaylist
 from bs4 import BeautifulSoup as Soup
 from typing_extensions import TypedDict
+
+from .types import CookiesBrowsers, VideoInfo, PlaylistEntry, YoutubePlaylist
 
 
 class YtcfgDict(TypedDict, total=False):
@@ -40,7 +41,7 @@ class YoutubeTool:
 
         return options
 
-    def api(self) -> Session:
+    def _api(self) -> Session:
         session = Session()
         session.cookies = self.ydl.cookiejar
         return session
