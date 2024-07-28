@@ -73,3 +73,19 @@ def test_youtube_tool_fetch_watchlater_playlist():
     # parsed = tool.fetch_info("https://www.youtube.com/playlist?list=WL")
     # # JsonPath[dict]('wl.json').write_json(parsed)
     # print(parsed)
+
+def test_youtube_tool_parse_watchlater_playlist_to_json():
+    import sqlite3
+    import pandas as pd
+    import json
+    path = JsonPath[dict](__file__).parent
+    data = path.joinpath("wl.json").read_json()
+    entries = json.loads(YoutubePlaylist(**data).model_dump_json())
+    df = pd.DataFrame(entries['entries'])
+    df = df.drop('thumbnails', axis=1)
+    conn = sqlite3.connect(path / "watch_later.db")
+    df.to_sql("watch_later_table", conn, if_exists="replace")
+    df.to_csv(path / "watch_later.csv")
+    (path / "watch-later.json").write_json(entries)
+    # df.to_csv("dd.csv", index=False)
+    # print(df)
