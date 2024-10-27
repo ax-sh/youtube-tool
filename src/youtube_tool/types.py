@@ -1,6 +1,6 @@
 from typing import Literal, Optional, List, Any
 
-from pydantic import BaseModel, model_validator, HttpUrl
+from pydantic import BaseModel, model_validator, HttpUrl, ConfigDict
 
 CookiesBrowsers = Literal["brave", "chrome", "vivaldi", "firefox", ""]
 
@@ -37,8 +37,8 @@ class YoutubeVideo(BaseModel):
     # channel_is_verified: str = ""
     # __x_forwarded_for_ip: str = ""
 
-    class Config:
-        extra = "allow"
+    # Using ConfigDict to set model configuration
+    model_config = ConfigDict(extra="allow")
 
 
 class YoutubePlaylist(BaseModel):
@@ -49,8 +49,8 @@ class YoutubePlaylist(BaseModel):
 
     entries: List[YoutubeVideo]
 
-    class Config:
-        extra = "allow"
+    # Using ConfigDict to set model configuration
+    model_config = ConfigDict(extra="allow")
 
 
 class PlaylistEntry(BaseModel):
