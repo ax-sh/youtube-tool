@@ -3,12 +3,12 @@ name = "youtube-tool"
 version = "0.3.0"
 description = "Add your description here"
 authors = [
-    { name = "Axmin", email = "56112475+ax-sh@users.noreply.github.com" }
+    { name = "Axmin" }
 ]
 dependencies = [
-    "yt-dlp[default]>=2024.7.16",
-    "pydantic>=2.8.2",
-    "faker>=26.0.0",
+    "yt-dlp[default]>=2024.10.22",
+    "pydantic>=2.9.2",
+    "faker>=30.8.1",
     "requests>=2.32.3",
     "beautifulsoup4>=4.12.3",
     #    "youtube-tool @ git+https://github.com/ax-sh/youtube-tool",
