@@ -56,8 +56,8 @@ class YoutubePlaylist(BaseModel):
 class PlaylistEntry(BaseModel):
     title: str
 
-    class Config:
-        extra = "allow"
+    # Using ConfigDict to set model configuration
+    model_config = ConfigDict(extra="allow")
 
 
 class VideoInfo(BaseModel):
