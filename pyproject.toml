@@ -42,7 +42,7 @@ start = "python main.py"
 format = "ruff format"
 test-api = 'rye test -- -k "test_api_" -q --disable-warnings'
 # Complex tasks with arguments
-test = { cmd = "pytest --ruff --ruff-format -p sugar --verbose" }
+test = { cmd = "pytest --ruff --ruff-format -p sugar  -q --disable-warnings" }
 check = [
 #    "black --check .",
     "flake8 .",
