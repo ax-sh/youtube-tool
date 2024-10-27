@@ -36,3 +36,8 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/youtube_tool"]
+
+[tool.git-cliff.git]
+conventional_commits = true
+commit_parsers = []
+filter_commits = false
