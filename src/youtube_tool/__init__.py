@@ -1,7 +1,7 @@
 from requests import Session
 from yt_dlp import YoutubeDL
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
-
+from yt_dlp.utils import DownloadError
 from bs4 import BeautifulSoup as Soup
 from typing_extensions import TypedDict
 
@@ -37,6 +37,10 @@ class Playlist:
             # video_id=video_id,
         )
         return response
+
+
+class YoutubeToolError(Exception):
+    pass
 
 
 class YoutubeTool:
@@ -111,8 +115,11 @@ class YoutubeTool:
         return response
 
     def fetch_videos_from_playlist(self, url: str) -> YoutubePlaylist:
-        info = self.fetch_info(url)
-        return YoutubePlaylist(**info)
+        try:
+            info = self.fetch_info(url)
+            return YoutubePlaylist(**info)
+        except DownloadError as e:
+            raise YoutubeToolError(e)
 
     def fetch_videos_from_watchlist(self) -> YoutubePlaylist:
         return self.fetch_videos_from_playlist(WATCH_LATER_URL)
