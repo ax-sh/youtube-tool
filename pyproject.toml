@@ -40,7 +40,7 @@ packages = ["src/youtube_tool"]
 [tool.rye.scripts]
 start = "python main.py"
 format = "ruff format"
-test-api = 'rye test -- -k "test_api_"  -v'
+test-api = 'rye test -- -k "test_api_" -q --disable-warnings'
 # Complex tasks with arguments
 test = { cmd = "pytest --ruff --ruff-format -p sugar --verbose" }
 check = [

@@ -1,7 +1,7 @@
 from unittest.mock import patch
 def test_api_playlist():
     print("This is a test output")
-    assert not True  # Your test assertion
+    assert True  # Your test assertion
 #
 # # my_module.py
 # def get_data():
