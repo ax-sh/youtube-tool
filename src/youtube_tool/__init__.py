@@ -75,6 +75,8 @@ class YoutubeTool:
             else client
         )
         self.extractor = YoutubeBaseInfoExtractor(self.ydl)
+        print(self.extractor.cookiejar)
+        exit()
         # cookies = [i for i in self.ydl.cookiejar if i.domain == ".youtube.com"]
 
     @classmethod

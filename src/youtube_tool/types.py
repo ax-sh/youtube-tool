@@ -2,7 +2,7 @@ from typing import Literal, Optional, List, Any
 
 from pydantic import BaseModel, model_validator, HttpUrl, ConfigDict
 
-CookiesBrowsers = Literal["brave", "chrome", "vivaldi", "firefox", ""]
+CookiesBrowsers = Literal["brave", "chrome", "vivaldi", "firefox", "safari", ""]
 
 
 class YoutubeVideo(BaseModel):
