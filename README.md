@@ -23,3 +23,8 @@ wl
 rye test -- --ruff --ruff-format -p sugar
 ```
 
+
+## For running main 
+```sh 
+rye run python main.py
+```

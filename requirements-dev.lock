@@ -25,6 +25,9 @@ certifi==2024.7.4
     # via yt-dlp
 charset-normalizer==3.3.2
     # via requests
+exceptiongroup==1.2.2
+    # via anyio
+    # via pytest
 faker==30.8.1
     # via youtube-tool
 h11==0.14.0
@@ -78,7 +81,11 @@ soupsieve==2.5
     # via beautifulsoup4
 termcolor==2.4.0
     # via pytest-sugar
+tomli==2.0.2
+    # via pytest
 typing-extensions==4.12.2
+    # via annotated-types
+    # via anyio
     # via faker
     # via pydantic
     # via pydantic-core
