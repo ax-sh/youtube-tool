@@ -4,7 +4,7 @@ import json
 
 
 def fetch_watchlater():
-    yt = YoutubeTool("vivaldi")
+    yt = YoutubeTool("firefox")
     # yt.remove_video_from_playlist('')
     # url = "https://www.youtube.com/playlist?list=WL"
     wl = yt.fetch_videos_from_watchlist()
@@ -15,5 +15,6 @@ def fetch_watchlater():
 wl = fetch_watchlater()
 path = Path(__file__).parent.absolute()
 data = path / "watchlist.json"
-with data.open("w", encoding="utf-8") as f:
-    json.dump(wl, f, indent=4)
+print(wl.model_dump(mode='json'))
+data.write_text(wl.model_dump_json())
+

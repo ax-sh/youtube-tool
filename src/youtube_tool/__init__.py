@@ -130,6 +130,7 @@ class YoutubeTool:
             info = self.fetch_info(url)
             return YoutubePlaylist(**info)
         except DownloadError as e:
+            logger.error(e)
             raise YoutubeToolError(e)
 
     def fetch_videos_from_watchlist(self) -> YoutubePlaylist:
