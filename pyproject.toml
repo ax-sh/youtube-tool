@@ -38,7 +38,7 @@ allow-direct-references = true
 packages = ["src/youtube_tool"]
 
 [tool.rye.scripts]
-start = "python main.py"
+main = "python main.py"
 format = "ruff format"
 test-api = 'rye test -- -k "test_api_" -q --disable-warnings'
 # Complex tasks with arguments
@@ -49,6 +49,7 @@ check = [
     "mypy .",
     "pytest"
 ]
+
 [tool.git-cliff.git]
 conventional_commits = true
 commit_parsers = []
