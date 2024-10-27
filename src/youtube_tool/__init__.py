@@ -6,11 +6,21 @@ from bs4 import BeautifulSoup as Soup
 from typing_extensions import TypedDict
 
 from .constants import WATCH_LATER_URL
-from .types import CookiesBrowsers, VideoInfo, PlaylistEntry, YoutubePlaylist
+from .types import CookiesBrowsers, YoutubePlaylist, VideoInfo, PlaylistEntry
+from enum import Enum
+import logging
+
+# Setup logging
+logger = logging.getLogger(__name__)
 
 
 class YtcfgDict(TypedDict, total=False):
     VISITOR_DATA: str
+
+
+class PlaylistAction(Enum):
+    REMOVE = "ACTION_REMOVE_VIDEO_BY_VIDEO_ID"
+    # Add more actions as needed
 
 
 class Playlist:
@@ -21,7 +31,8 @@ class Playlist:
     def remove_video(self, video_id: str):
         action = {
             "removedVideoId": video_id,
-            "action": "ACTION_REMOVE_VIDEO_BY_VIDEO_ID",
+            "action": PlaylistAction.REMOVE,
+            # "action": "ACTION_REMOVE_VIDEO_BY_VIDEO_ID",
         }
         endpoint = "browse/edit_playlist?prettyPrint=false"
         query = {
