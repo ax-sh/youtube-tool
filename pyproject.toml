@@ -42,7 +42,12 @@ start = "python main.py"
 format = "ruff format"
 # Complex tasks with arguments
 test = { cmd = "pytest --ruff --ruff-format -p sugar --verbose" }
-
+check = [
+#    "black --check .",
+    "flake8 .",
+    "mypy .",
+    "pytest"
+]
 [tool.git-cliff.git]
 conventional_commits = true
 commit_parsers = []
