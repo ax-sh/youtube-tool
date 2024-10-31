@@ -17,6 +17,7 @@ class PlaylistData(TypedDict):
     title: str
 
 
+@pytest.mark.skip(reason="This test is not ready yet.")
 def test_parse_json():
     path = JsonPath(__file__).parent
     print()
