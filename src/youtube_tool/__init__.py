@@ -99,6 +99,9 @@ class YoutubeTool:
     def wl_playlist(self):
         return Playlist("WL", self.extractor)
 
+
+    # todo refactor below
+
     def get_playlist(self, playlist_id: str):
         url = f"https://www.youtube.com/watch?v={playlist_id}"
         return self.fetch_info(url)
