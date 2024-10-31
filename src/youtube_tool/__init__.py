@@ -12,6 +12,7 @@ import logging
 
 # Setup logging
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
 class YtcfgDict(TypedDict, total=False):
