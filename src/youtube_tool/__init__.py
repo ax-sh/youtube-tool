@@ -52,6 +52,8 @@ class Playlist:
 
 
 class YoutubeToolError(Exception):
+    """Custom exception for YoutubeTool-related errors."""
+
     pass
 
 
@@ -70,6 +72,7 @@ class YoutubeTool:
     }
 
     def __init__(self, client: YoutubeDL | CookiesBrowsers) -> None:
+        """Initializes YoutubeTool with a YoutubeDL client or cookies from a browser."""
         self.ydl = (
             YoutubeDL(self.make_youtube_dl_config(client))
             if isinstance(client, str)
