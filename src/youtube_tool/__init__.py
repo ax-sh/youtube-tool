@@ -75,8 +75,7 @@ class YoutubeTool:
             else client
         )
         self.extractor = YoutubeBaseInfoExtractor(self.ydl)
-        print(self.extractor.cookiejar)
-        exit()
+        # exit()
         # cookies = [i for i in self.ydl.cookiejar if i.domain == ".youtube.com"]
 
     @classmethod
@@ -95,6 +94,9 @@ class YoutubeTool:
 
     def fetch_info(self, url: str) -> dict:
         return self.ydl.extract_info(url, download=False)
+
+    def wl_playlist(self):
+        return Playlist("WL", self.extractor)
 
     def get_playlist(self, playlist_id: str):
         url = f"https://www.youtube.com/watch?v={playlist_id}"
@@ -128,6 +130,8 @@ class YoutubeTool:
         return response
 
     def fetch_videos_from_playlist(self, url: str) -> YoutubePlaylist:
+        if not self.extractor.is_authenticated:
+            raise YoutubeToolError("Session is not authenticated")
         try:
             info = self.fetch_info(url)
             return YoutubePlaylist(**info)
