@@ -20,8 +20,6 @@ class YtcfgDict(TypedDict, total=False):
     VISITOR_DATA: str
 
 
-
-
 class YoutubeToolError(Exception):
     """Custom exception for YoutubeTool-related errors."""
 

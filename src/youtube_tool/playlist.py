@@ -8,7 +8,6 @@ class PlaylistAction(Enum):
     # Add more actions as needed
 
 
-
 class Playlist:
     def __init__(self, playlist_id: str, api_session: YoutubeBaseInfoExtractor):
         self.playlist_id = playlist_id  # "WL"
