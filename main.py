@@ -20,4 +20,4 @@ data = path / "watchlist.json"
 
 # print(wl.model_dump(mode="json"))
 data.write_text(wl.model_dump_json(indent=2))
-print("DONE")
+print("DONE Videos in playlist:", len(wl.entries))
