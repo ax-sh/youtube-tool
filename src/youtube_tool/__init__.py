@@ -29,6 +29,12 @@ class Playlist:
         self.playlist_id = playlist_id  # "WL"
         self.api_session = api_session
 
+    def fetch_playlist(self) -> YoutubePlaylist:
+        raise NotImplementedError
+
+    def add_video_to_playlist(self, video_id: str, playlist_id: str):
+        raise NotImplementedError
+
     def remove_video(self, video_id: str):
         action = {
             "removedVideoId": video_id,
@@ -101,7 +107,6 @@ class YoutubeTool:
 
     def wl_playlist(self):
         return Playlist("WL", self.extractor)
-
 
     # todo refactor below
 
