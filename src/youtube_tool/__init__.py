@@ -7,7 +7,13 @@ from typing_extensions import TypedDict
 
 from .constants import WATCH_LATER_URL
 from .playlist import Playlist
-from .types import CookiesBrowsers, YoutubePlaylist, VideoInfo, PlaylistEntry
+from .types import (
+    CookiesBrowsers,
+    YoutubePlaylist,
+    YoutubeToolError,
+    VideoInfo,
+    PlaylistEntry,
+)
 
 import logging
 
@@ -18,12 +24,6 @@ logger.setLevel(logging.INFO)
 
 class YtcfgDict(TypedDict, total=False):
     VISITOR_DATA: str
-
-
-class YoutubeToolError(Exception):
-    """Custom exception for YoutubeTool-related errors."""
-
-    pass
 
 
 class YoutubeTool:

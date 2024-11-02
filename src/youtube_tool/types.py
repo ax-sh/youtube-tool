@@ -70,3 +70,9 @@ class VideoInfo(BaseModel):
     live_status: Optional[str]
     channel_is_verified: Optional[bool]
     __x_forwarded_for_ip: Optional[str]
+
+
+class YoutubeToolError(Exception):
+    """Custom exception for YoutubeTool-related errors."""
+
+    pass

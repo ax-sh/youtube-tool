@@ -1,6 +1,7 @@
 from yt_dlp.extractor.youtube import YoutubeBaseInfoExtractor
 from enum import Enum
-from youtube_tool import YoutubePlaylist, YoutubeToolError
+
+from .types import YoutubeToolError, YoutubePlaylist
 
 
 class PlaylistAction(Enum):
