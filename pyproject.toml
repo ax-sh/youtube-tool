@@ -14,6 +14,7 @@ dependencies = [
     #    "youtube-tool @ git+https://github.com/ax-sh/youtube-tool",
     "respx>=0.21.1",
     "httpx>=0.27.0",
+    "jupyterlab>=4.3.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
