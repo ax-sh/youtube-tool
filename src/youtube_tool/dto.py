@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Optional
 
 from pydantic import BaseModel, field_validator
 from datetime import datetime
@@ -7,12 +7,12 @@ from datetime import datetime
 class VideoDTO(BaseModel):
     id: str
     title: str
-    url: str
-    view_count: int
-    duration: int
-    timestamp: datetime
-    channel_id: str
-    channel: str
+    # url: str
+    view_count: Optional[int] = 0
+    duration: Optional[int] = 0
+    timestamp: Optional[datetime]
+    channel_id: Optional[str]
+    channel: Optional[str]
 
     @field_validator("timestamp", mode="before")
     def ensure_timestamp_is_datetime(cls, value: Any) -> datetime:
@@ -24,10 +24,13 @@ class VideoDTO(BaseModel):
             return datetime.fromisoformat(value)
         elif isinstance(value, datetime):
             return value  # Already a datetime, return as is
+        elif value is None:
+            return value
         else:
             raise ValueError(
                 "Invalid timestamp format. Expected an integer, string, or datetime object."
             )
+
 
 def playlist_dto(data):
     entries = data["entries"]

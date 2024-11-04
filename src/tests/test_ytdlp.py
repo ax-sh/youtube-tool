@@ -3,8 +3,9 @@ from yt_dlp import YoutubeDL
 
 from pprint import pprint, pformat
 from snapshottest import Snapshot
-
+from pathlib import Path
 from youtube_tool.dto import playlist_dto
+import json
 # # Set up options with proxy configuration
 # ydl_opts = {
 #     "nocheckcertificate": True,
@@ -35,7 +36,7 @@ def ydl_opts():
             # },
         },
         # "quiet": True,  # Suppress unnecessary logs
-        "lazy_playlist": True,
+        # "lazy_playlist": True,
         "clean_infojson": True,
     }
 
@@ -58,6 +59,7 @@ public_playlist_url = (
 def test_youtube_scrape_playlist(ydl_opts, snapshot: Snapshot):
     """Test if yt-dlp can download a specific format (e.g., audio only)."""
     opts = ydl_opts.copy()
+    opts["quiet"] = True
 
     with YoutubeDL(opts) as ydl:
         data = ydl.extract_info(public_playlist_url)
@@ -68,3 +70,12 @@ def test_youtube_scrape_playlist(ydl_opts, snapshot: Snapshot):
 
     entries = playlist_dto(data)
     pprint(entries)
+
+
+def test_youtube_scrape_watchlater_playlist():
+    path = Path(__file__).parent / "../../watchlist.json"
+    # / "fixtures" / "watchlater_playlist")
+    data = json.loads(path.read_text())
+    entries = playlist_dto(data)
+    pprint(entries)
+    # raise Exception()
