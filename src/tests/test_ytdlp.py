@@ -74,7 +74,7 @@ def test_yt_scrape_playlist(ydl_opts, snapshot: Snapshot):
 
 def test_yt_scrape_watchlater_playlist():
     path = Path(__file__).parent / "../../watchlist.json"
-    # / "fixtures" / "watchlater_playlist")
+
     data = json.loads(path.read_text())
     entries = playlist_dto(data)
     pprint(entries)
