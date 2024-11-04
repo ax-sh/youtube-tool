@@ -13,7 +13,7 @@ class VideoStatus(Enum):
 class VideoDTO(BaseModel):
     id: str
     title: str
-    # url: str
+    url: str
     view_count: Optional[int] = 0
     duration: Optional[int] = 0
     timestamp: Optional[datetime]
