@@ -9,7 +9,10 @@ class VideoDTO(BaseModel):
     title: str
     url: str
     view_count: int
+    duration: int
     timestamp: datetime
+    channel_id: str
+    channel: str
 
     @field_validator("timestamp", mode="before")
     def ensure_timestamp_is_datetime(cls, value: Any) -> datetime:
@@ -25,24 +28,6 @@ class VideoDTO(BaseModel):
             raise ValueError(
                 "Invalid timestamp format. Expected an integer, string, or datetime object."
             )
-
-    # @field_validator("name")
-    # @classmethod
-    # def name_must_contain_space(cls, v: str) -> str:
-    #     if " " not in v:
-    #         raise ValueError("must contain a space")
-    #     return v.title()
-
-
-# @field_validator("timestamp", pre=True)
-# def parse_timestamp(cls, value):
-#     # Define a custom format if needed
-#     return (
-#         datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
-#         if isinstance(value, str)
-#         else value
-#     )
-
 
 def playlist_dto(data):
     entries = data["entries"]
