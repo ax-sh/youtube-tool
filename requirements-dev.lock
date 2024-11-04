@@ -311,5 +311,5 @@ websocket-client==1.8.0
     # via jupyter-server
 websockets==13.1
     # via yt-dlp
-yt-dlp==2024.10.22
+yt-dlp==2024.11.4
     # via youtube-tool

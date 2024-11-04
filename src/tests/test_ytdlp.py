@@ -56,7 +56,7 @@ public_playlist_url = (
 
 
 @pytest.mark.usefixtures("snapshot")
-def test_youtube_scrape_playlist(ydl_opts, snapshot: Snapshot):
+def test_yt_scrape_playlist(ydl_opts, snapshot: Snapshot):
     """Test if yt-dlp can download a specific format (e.g., audio only)."""
     opts = ydl_opts.copy()
     opts["quiet"] = True
@@ -72,7 +72,7 @@ def test_youtube_scrape_playlist(ydl_opts, snapshot: Snapshot):
     pprint(entries)
 
 
-def test_youtube_scrape_watchlater_playlist():
+def test_yt_scrape_watchlater_playlist():
     path = Path(__file__).parent / "../../watchlist.json"
     # / "fixtures" / "watchlater_playlist")
     data = json.loads(path.read_text())
