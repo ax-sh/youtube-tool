@@ -13,7 +13,8 @@ def ydl_opts():
         "skip_download": True,
         "no_warnings": True,
         "extract_flat": "in_playlist",
-        "lazy_playlist": True,
+        # "lazy_playlist": True,
+        # "clean_infojson": True,
     }
 
 
@@ -27,13 +28,17 @@ def cleanup():
 
 @pytest.mark.usefixtures("snapshot")
 def test_youtube_scrape_playlist(ydl_opts, snapshot: Snapshot):
+    print(ydl_opts,"ddd")
     """Test if yt-dlp can download a specific format (e.g., audio only)."""
     audio_opts = ydl_opts.copy()
     playlist_url = (
         "https://www.youtube.com/playlist?list=PLffJUy1BnWj13MxDDbXWcbPzna0UESH59"
+        # "https://www.youtube.com/watch?v=8IWV6I1mK6U&list=PLIGDNOJWiL1-zscX224pibRBb4RChTpgM"
     )
 
     with YoutubeDL(audio_opts) as ydl:
-       data = ydl.extract_info(playlist_url)
-    pprint(data)
-    snapshot.assert_match(data, "user_data_snapshot")
+        data = ydl.extract_info(playlist_url)
+        # Exclude or mask the dynamic field
+    data["epoch"] = "<ignored>"
+    snapshot.assert_match(data, "playlist")
+    snapshot.assert_match(data['entries'], "playlist_videos")
