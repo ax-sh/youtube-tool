@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import List, Any, Optional
 from enum import Enum
 from pydantic import BaseModel, field_validator, model_validator
 from datetime import datetime
@@ -49,6 +49,17 @@ class VideoDTO(BaseModel):
         )
 
         return values
+
+    thumbnails: List[Any] = []
+    thumb: str = ""
+
+    @model_validator(mode="before")
+    def normalize_thumbnail(cls, data: Any) -> Any:
+        thumbnails = data.get("thumbnails")
+        thumb = max(thumbnails, key=lambda x: x.get("height", 1) * x.get("width", 1))
+        data["thumb"] = thumb["url"]
+
+        return data
 
 
 def playlist_dto(data):
