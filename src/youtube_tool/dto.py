@@ -1,7 +1,13 @@
 from typing import Any, Optional
-
-from pydantic import BaseModel, field_validator
+from enum import Enum
+from pydantic import BaseModel, field_validator, model_validator
 from datetime import datetime
+
+
+class VideoStatus(Enum):
+    NON_ACCESSIBLE = "NON_ACCESSIBLE"
+    UNKNOWN = "UNKNOWN"
+    AVAILABLE = "AVAILABLE"
 
 
 class VideoDTO(BaseModel):
@@ -13,6 +19,7 @@ class VideoDTO(BaseModel):
     timestamp: Optional[datetime]
     channel_id: Optional[str]
     channel: Optional[str]
+    video_status: Optional[VideoStatus] = VideoStatus.UNKNOWN
 
     @field_validator("timestamp", mode="before")
     def ensure_timestamp_is_datetime(cls, value: Any) -> datetime:
@@ -30,6 +37,18 @@ class VideoDTO(BaseModel):
             raise ValueError(
                 "Invalid timestamp format. Expected an integer, string, or datetime object."
             )
+
+    @model_validator(mode="before")
+    def check_release_date(cls, values):
+        title = values.get("title")
+        NON_ACCESSABLE = ["[Deleted video]", "[Private video]"]
+        values["video_status"] = (
+            VideoStatus.AVAILABLE
+            if title in NON_ACCESSABLE
+            else VideoStatus.NON_ACCESSIBLE
+        )
+
+        return values
 
 
 def playlist_dto(data):
